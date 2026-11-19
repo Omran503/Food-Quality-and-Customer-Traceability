@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="Definitions_11srjis" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Web Modeler" exporterVersion="19abde7" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.10.0">
+  <decision id="Decision_1s9lg8a" name="Report Issue">
+    <decisionTable id="DecisionTable_1w02f12">
+      <input id="Input_1">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" typeRef="string" />
+    </decisionTable>
+  </decision>
+  <decision id="Decision_1hnoao2" name="Action and notification">
+    <informationRequirement id="InformationRequirement_0u1wqgd">
+      <requiredDecision href="#Decision_1s9lg8a" />
+    </informationRequirement>
+  </decision>
+  <decision id="Decision_1fuc1zu" name="Resolved">
+    <informationRequirement id="InformationRequirement_1yguo6c">
+      <requiredDecision href="#Decision_1hnoao2" />
+    </informationRequirement>
+  </decision>
+  <knowledgeSource id="KnowledgeSource_1pvo3s5" name="Confidence in marketplace">
+    <authorityRequirement id="AuthorityRequirement_17f8626">
+      <requiredDecision href="#Decision_1s9lg8a" />
+    </authorityRequirement>
+    <authorityRequirement id="AuthorityRequirement_09mgivq">
+      <requiredDecision href="#Decision_1hnoao2" />
+    </authorityRequirement>
+  </knowledgeSource>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Decision_1s9lg8a">
+        <dc:Bounds height="80" width="180" x="170" y="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1ri49ao" dmnElementRef="Decision_1hnoao2">
+        <dc:Bounds height="80" width="180" x="170" y="220" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1f684i0" dmnElementRef="Decision_1fuc1zu">
+        <dc:Bounds height="80" width="180" x="170" y="380" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0sudklo" dmnElementRef="InformationRequirement_0u1wqgd">
+        <di:waypoint x="260" y="160" />
+        <di:waypoint x="260" y="200" />
+        <di:waypoint x="260" y="220" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_03f58dw" dmnElementRef="InformationRequirement_1yguo6c">
+        <di:waypoint x="260" y="300" />
+        <di:waypoint x="260" y="360" />
+        <di:waypoint x="260" y="380" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_15qxk1n" dmnElementRef="KnowledgeSource_1pvo3s5">
+        <dc:Bounds height="63" width="100" x="470" y="158" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1c6f6rq" dmnElementRef="AuthorityRequirement_17f8626">
+        <di:waypoint x="350" y="150" />
+        <di:waypoint x="470" y="190" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0oyvmzh" dmnElementRef="AuthorityRequirement_09mgivq">
+        <di:waypoint x="350" y="230" />
+        <di:waypoint x="470" y="190" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

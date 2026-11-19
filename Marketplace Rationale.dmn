@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="Definitions_0idaaxr" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Web Modeler" exporterVersion="19abde7" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.10.0">
+  <inputData id="InputData_00c684k" name="affected Customers informed" />
+  <decision id="Decision_1ywyo8b" name="affected orders">
+    <informationRequirement id="InformationRequirement_0z1w0rm">
+      <requiredInput href="#InputData_00c684k" />
+    </informationRequirement>
+  </decision>
+  <decision id="Decision_1k8o7ug" name="send notification">
+    <informationRequirement id="InformationRequirement_0g96gmy">
+      <requiredInput href="#InputData_00c684k" />
+    </informationRequirement>
+  </decision>
+  <decision id="Decision_0fx2arw" name="Use Several Channels">
+    <informationRequirement id="InformationRequirement_002sitd">
+      <requiredInput href="#InputData_00c684k" />
+    </informationRequirement>
+    <authorityRequirement id="AuthorityRequirement_0e4jxnz">
+      <requiredAuthority href="#KnowledgeSource_12vlatx" />
+    </authorityRequirement>
+  </decision>
+  <decision id="Decision_03l1115" name="Log each result">
+    <informationRequirement id="InformationRequirement_1gydm9y">
+      <requiredInput href="#InputData_00c684k" />
+    </informationRequirement>
+  </decision>
+  <decision id="Decision_0equg73" name="Flag failed notification">
+    <informationRequirement id="InformationRequirement_08uuwaf">
+      <requiredInput href="#InputData_00c684k" />
+    </informationRequirement>
+  </decision>
+  <knowledgeSource id="KnowledgeSource_0b3w3i2" name="Accurate">
+    <authorityRequirement id="AuthorityRequirement_0xn0qsm">
+      <requiredDecision href="#Decision_1ywyo8b" />
+    </authorityRequirement>
+  </knowledgeSource>
+  <knowledgeSource id="KnowledgeSource_12vlatx" name="Time efficient">
+    <authorityRequirement id="AuthorityRequirement_126lx82">
+      <requiredDecision href="#Decision_1k8o7ug" />
+    </authorityRequirement>
+  </knowledgeSource>
+  <knowledgeSource id="KnowledgeSource_12japse" name="Ensure Privacy">
+    <authorityRequirement id="AuthorityRequirement_1e6czwq">
+      <requiredDecision href="#Decision_0fx2arw" />
+    </authorityRequirement>
+  </knowledgeSource>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape id="DMNShape_0d1o34d" dmnElementRef="InputData_00c684k">
+        <dc:Bounds height="45" width="125" x="157" y="77" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1r8gkvv" dmnElementRef="Decision_1ywyo8b">
+        <dc:Bounds height="80" width="180" x="300" y="160" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_02uhtuv" dmnElementRef="Decision_1k8o7ug">
+        <dc:Bounds height="80" width="180" x="300" y="270" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0xtmv89" dmnElementRef="Decision_0fx2arw">
+        <dc:Bounds height="80" width="180" x="300" y="390" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1ly7jpz" dmnElementRef="Decision_03l1115">
+        <dc:Bounds height="80" width="180" x="300" y="510" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1m4z1ff" dmnElementRef="Decision_0equg73">
+        <dc:Bounds height="80" width="180" x="300" y="630" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0ucu2wt" dmnElementRef="KnowledgeSource_0b3w3i2">
+        <dc:Bounds height="63" width="100" x="620" y="169" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_191iih9" dmnElementRef="KnowledgeSource_12vlatx">
+        <dc:Bounds height="63" width="100" x="620" y="279" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1lev4au" dmnElementRef="KnowledgeSource_12japse">
+        <dc:Bounds height="63" width="100" x="620" y="399" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1nke207" dmnElementRef="AuthorityRequirement_0xn0qsm">
+        <di:waypoint x="480" y="200" />
+        <di:waypoint x="620" y="200" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0dm4vol" dmnElementRef="AuthorityRequirement_126lx82">
+        <di:waypoint x="480" y="310" />
+        <di:waypoint x="620" y="310" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0tqhgtw" dmnElementRef="AuthorityRequirement_1e6czwq">
+        <di:waypoint x="480" y="430" />
+        <di:waypoint x="620" y="430" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1dw4jra" dmnElementRef="AuthorityRequirement_0e4jxnz">
+        <di:waypoint x="620" y="326" />
+        <di:waypoint x="400" y="390" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1txhp33" dmnElementRef="InformationRequirement_0z1w0rm">
+        <di:waypoint x="220" y="122" />
+        <di:waypoint x="390" y="140" />
+        <di:waypoint x="390" y="160" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1o6wblc" dmnElementRef="InformationRequirement_0g96gmy">
+        <di:waypoint x="220" y="122" />
+        <di:waypoint x="390" y="250" />
+        <di:waypoint x="390" y="270" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1sbhqtw" dmnElementRef="InformationRequirement_002sitd">
+        <di:waypoint x="220" y="122" />
+        <di:waypoint x="390" y="370" />
+        <di:waypoint x="390" y="390" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1mbxl2u" dmnElementRef="InformationRequirement_1gydm9y">
+        <di:waypoint x="220" y="122" />
+        <di:waypoint x="390" y="490" />
+        <di:waypoint x="390" y="510" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0i0vo2c" dmnElementRef="InformationRequirement_08uuwaf">
+        <di:waypoint x="220" y="122" />
+        <di:waypoint x="390" y="610" />
+        <di:waypoint x="390" y="630" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

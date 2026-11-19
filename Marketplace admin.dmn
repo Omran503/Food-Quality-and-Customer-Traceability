@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="Definitions_1acozry" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Web Modeler" exporterVersion="19abde7" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.10.0">
+  <inputData id="InputData_1c6e43c" name="Create incident recod" />
+  <decision id="Decision_0kwbc12" name="contact producer">
+    <informationRequirement id="InformationRequirement_0a694o6">
+      <requiredInput href="#InputData_1c6e43c" />
+    </informationRequirement>
+  </decision>
+  <decision id="Decision_03jylff" name="close or escalate">
+    <informationRequirement id="InformationRequirement_0qzso5z">
+      <requiredDecision href="#Decision_0kwbc12" />
+    </informationRequirement>
+  </decision>
+  <decision id="Decision_0aw4qdx" name="suspend product">
+    <informationRequirement id="InformationRequirement_0l8tplm">
+      <requiredDecision href="#Decision_03jylff" />
+    </informationRequirement>
+  </decision>
+  <knowledgeSource id="KnowledgeSource_0xbx17n" name="Customer Safety">
+    <authorityRequirement id="AuthorityRequirement_1tbbqjw">
+      <requiredDecision href="#Decision_0aw4qdx" />
+    </authorityRequirement>
+  </knowledgeSource>
+  <knowledgeSource id="KnowledgeSource_1r0byt1" name="Producer disruption">
+    <authorityRequirement id="AuthorityRequirement_1qkn603">
+      <requiredDecision href="#Decision_0aw4qdx" />
+    </authorityRequirement>
+  </knowledgeSource>
+  <decision id="Decision_1bp5olf" name="Incident Resolved">
+    <informationRequirement id="InformationRequirement_1m3mjd3">
+      <requiredDecision href="#Decision_03jylff" />
+    </informationRequirement>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape id="DMNShape_1jj3mem" dmnElementRef="InputData_1c6e43c">
+        <dc:Bounds height="45" width="125" x="158" y="78" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0hxarie" dmnElementRef="Decision_0kwbc12">
+        <dc:Bounds height="80" width="180" x="131" y="160" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0pkid2v" dmnElementRef="Decision_03jylff">
+        <dc:Bounds height="80" width="180" x="131" y="270" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0up27oj" dmnElementRef="Decision_0aw4qdx">
+        <dc:Bounds height="80" width="180" x="220" y="370" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0o5m6p7" dmnElementRef="KnowledgeSource_0xbx17n">
+        <dc:Bounds height="63" width="100" x="450" y="318" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1276nfp" dmnElementRef="KnowledgeSource_1r0byt1">
+        <dc:Bounds height="63" width="100" x="450" y="429" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1hi3l2o" dmnElementRef="AuthorityRequirement_1qkn603">
+        <di:waypoint x="400" y="421" />
+        <di:waypoint x="450" y="460" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0o31tq0" dmnElementRef="AuthorityRequirement_1tbbqjw">
+        <di:waypoint x="400" y="399" />
+        <di:waypoint x="450" y="349" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1o0b1vu" dmnElementRef="InformationRequirement_0a694o6">
+        <di:waypoint x="221" y="123" />
+        <di:waypoint x="221" y="140" />
+        <di:waypoint x="221" y="160" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_127j3zt" dmnElementRef="InformationRequirement_0qzso5z">
+        <di:waypoint x="221" y="240" />
+        <di:waypoint x="221" y="250" />
+        <di:waypoint x="221" y="270" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1tudgcm" dmnElementRef="Decision_1bp5olf">
+        <dc:Bounds height="80" width="180" x="131" y="500" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_18eheqz" dmnElementRef="InformationRequirement_1m3mjd3">
+        <di:waypoint x="221" y="350" />
+        <di:waypoint x="221" y="480" />
+        <di:waypoint x="221" y="500" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_03dohqv" dmnElementRef="InformationRequirement_0l8tplm">
+        <di:waypoint x="221" y="350" />
+        <di:waypoint x="200" y="420" />
+        <di:waypoint x="220" y="411" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
